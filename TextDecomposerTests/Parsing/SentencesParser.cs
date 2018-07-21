@@ -2,6 +2,7 @@
 using NSubstitute;
 using System.Linq;
 using TextDecomposer.Utils.Parsing;
+using Xunit;
 
 namespace TextDecomposerTests.Parsing
 {
@@ -16,6 +17,7 @@ namespace TextDecomposerTests.Parsing
             sentencesParser = new SentencesParser(rawSentencesParser, wordsParser);
         }
 
+        [Fact]
         public void WhenTextIsRegular_Parse_ShouldReturnOrderedWords()
         {
             //arrange

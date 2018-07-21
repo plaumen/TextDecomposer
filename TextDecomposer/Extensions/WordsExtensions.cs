@@ -7,7 +7,7 @@ namespace TextDecomposer.Extensions
     {
         public static Sentence ToSentence(this ICollection<string> words)
         {
-            return new Sentence(words);
+            return new Sentence { Words = new List<string>(words) };
         }
     }
 }

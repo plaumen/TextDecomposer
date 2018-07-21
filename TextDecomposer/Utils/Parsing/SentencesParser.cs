@@ -4,7 +4,7 @@ using TextDecomposer.Models;
 
 namespace TextDecomposer.Utils.Parsing
 {
-    public class SentencesParser : IParser<Sentence>
+    public class SentencesParser : ISentencesParser
     {
         private IRawSentencesParser rawSentencesParser;
         private IWordsParser wordsParser;

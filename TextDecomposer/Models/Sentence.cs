@@ -6,12 +6,13 @@ namespace TextDecomposer.Models
 {
     public class Sentence
     {
-        public Sentence(ICollection<string> words)
-        {
-            this.Words = new List<string>(words.OrderBy(word => word));
-        }
+        private List<string> _words;
 
         [XmlElement("word")]
-        public List<string> Words { get; set; }
+        public List<string> Words
+        {
+            get => _words.OrderBy(word => word).ToList();
+            set => _words = value;
+        }
     }
 }
