@@ -2,7 +2,7 @@
 
 namespace TextDecomposer.Utils.Parsing
 {
-    public class TextParser
+    public class TextParser : ITextParser
     {
         private readonly ISentencesParser sentencesParser;
 
