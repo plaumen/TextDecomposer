@@ -119,5 +119,21 @@ namespace TextDecomposerTests.Parsing
             sentences.ElementAt(0).Should().Be("wow");
             sentences.ElementAt(1).Should().Be("my father died");
         }
+
+        [Fact]
+        public void WhenNotStandardCharactersOccurs_Parse_ShouldOmitThem()
+        {
+            //arrange 
+            var notStandardCharactersText = "music;! price: 10$. &&&very cheap    ?";
+
+            //act
+            var sentences = rawSentencesParser.Parse(notStandardCharactersText);
+
+            //assert
+            sentences.Should().HaveCount(3);
+            sentences.ElementAt(0).Should().Be("music");
+            sentences.ElementAt(1).Should().Be("price");
+            sentences.ElementAt(2).Should().Be("very cheap");
+        }
     }
 }

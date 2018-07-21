@@ -11,7 +11,9 @@ namespace TextDecomposer.Utils.Parsing
         public ICollection<string> Parse(string text)
         {
             var textWithoutNewLines = text.Replace(@"\n", string.Empty).Replace(@"\r", string.Empty);
-            return Regex.Split(textWithoutNewLines, StopCharsPattern).Where(s => !string.IsNullOrEmpty(s) && !Regex.Match(s, StopCharsPattern).Success).Select(s => s.Trim()).ToArray();
+            var textWithoutNonWordCharacters = Regex.Replace(textWithoutNewLines, @"[^a-zA-Z'-.?! ]+", string.Empty);
+
+            return Regex.Split(textWithoutNonWordCharacters, StopCharsPattern).Where(s => !string.IsNullOrEmpty(s) && !Regex.Match(s, StopCharsPattern).Success).Select(s => s.Trim()).ToArray();
         }
     }
 }
