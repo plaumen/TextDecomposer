@@ -4,7 +4,7 @@ using System.Text.RegularExpressions;
 
 namespace TextDecomposer.Utils.Parsing
 {
-    public class WordsParser : IParser<string>
+    public class WordsParser : IWordsParser
     {
         private const string EmptyCharsPattern = @"\s+";
 

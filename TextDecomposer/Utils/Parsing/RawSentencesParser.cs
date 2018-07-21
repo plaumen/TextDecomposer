@@ -4,7 +4,7 @@ using System.Text.RegularExpressions;
 
 namespace TextDecomposer.Utils.Parsing
 {
-    public class RawSentencesParser : IParser<string>
+    public class RawSentencesParser : IRawSentencesParser
     {
         private const string StopCharsPattern = @"(\(\.+\)|\.|!|\?)+";
 
