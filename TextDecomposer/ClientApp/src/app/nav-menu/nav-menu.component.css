@@ -1,56 +1,21 @@
-/*nav {
-    background: #2D2E2E;
-    height: 50px;
-    width: 100%;
-}
-
-li 
-{
-    display: inline;
-    color: antiquewhite;
-
-}
-
-
-/*li a{
-    color: #fff;
-    padding: 20px;
-    display: inline;
-    
-}*/
-
 ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #1e1e1e;
+    background-color: #1c313a;
 }
 
-li {
-    float: left;
+.btn-space {
+  margin-right: 5px;
 }
 
-li a {
-        display: block;
-        color: white;
-        text-align: center;
-        padding: 14px 16px;
-        text-decoration: none;
+.btn-wd
+{
+  width: 100px;
 }
 
-        /* Change the link color to #111 (black) on hover */
-li a:hover {
-            background-color: #111;
+.nav-dark{
+  background-color: #1c313a;
 }
 
-li p{
-    color: aliceblue;
-    text-align: center;
-    height: inherit;
-    display: block
-
-    
+.right-side-button {
+  float: right;
 }
-
 

@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
+using System.IO;
+using System.Text;
+using System.Threading.Tasks;
 using TextDecomposer.Utils.Conversion;
 using TextDecomposer.Utils.Parsing;
 
@@ -16,48 +18,34 @@ namespace TextDecomposer.ApiControllers
             this.textParser = textParser;
         }
 
-        [HttpGet("xml/{text}")]
-        public ActionResult<string> Xml(string text)
-        {
-            return this.textParser.Parse(text).ToXmlString();
-        }
-
-        [HttpGet("csv/{text}")]
-        public ActionResult<string> Csv(string text)
-        {
-            return this.textParser.Parse(text).ToCsv();
-        }
-
-        // GET: api/TextConversion
-        [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
-
-        // GET: api/TextConversion/5
-        [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
-        {
-            return "value";
-        }
-
         // POST: api/TextConversion
         [HttpPost]
-        public void Post([FromBody] string value)
+        [Route("Xml")]
+        public async Task<string> Xml(string parameter)
         {
+            var textToParse = await ReadRequestBody();
+
+            return this.textParser.Parse(textToParse).ToXmlString();
         }
 
-        // PUT: api/TextConversion/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [HttpPost]
+        [Route("Csv")]
+        public async Task<string> Csv(string parameter)
         {
+            var textToParse = await ReadRequestBody();
+
+            return this.textParser.Parse(textToParse).ToCsv();
         }
 
-        // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        private async Task<string> ReadRequestBody()
         {
+            using (StreamReader reader = new StreamReader(Request.Body, Encoding.UTF8))
+            {
+                return await reader.ReadToEndAsync();
+            }
+
+
         }
+
     }
 }

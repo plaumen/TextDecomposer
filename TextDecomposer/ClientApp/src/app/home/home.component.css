@@ -1,10 +1,20 @@
-.row {
-    display: flex;
+html, body, .container {
+  height: 100%;
 }
 
-.column {
-    flex: 50%;
-    display: table-cell;
-    vertical-align: top;
-    height: 500px
+.container {
+  display: table;
+  width: 100%;
+  min-height: 100%;
+  overflow: hidden;
+}
+
+.row {
+  height: 100%;
+  display: table-row;
+}
+
+.col-full-height{
+  margin-bottom: -9999px;
+  padding-bottom: 9999px
 }

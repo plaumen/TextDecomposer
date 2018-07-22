@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-nav-menu',
@@ -6,13 +7,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./nav-menu.component.css']
 })
 export class NavMenuComponent {
-  isExpanded = false;
 
-  collapse() {
-    this.isExpanded = false;
+  constructor(private data: DataService) { }
+
+  getXml() {
+    this.data.getXmlPost();
   }
 
-  toggle() {
-    this.isExpanded = !this.isExpanded;
+  getCsv() {
+    this.data.getCsvPost();
   }
+
 }

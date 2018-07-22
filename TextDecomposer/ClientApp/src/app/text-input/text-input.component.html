@@ -1,4 +1,5 @@
-<input #input />
+<div>
+  <span><strong>Enter text here:</strong></span>
+  <textarea  #input [ngModel]="mymodel" (ngModelChange)="valuechange(input.value)" class="in-put span6" > </textarea>
+</div>
 
-<button (click)="parseToXml(input.value)">XML</button>
-<button (click)="parseToCsv(input.value)">CSV</button>

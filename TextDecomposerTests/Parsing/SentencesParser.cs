@@ -18,7 +18,7 @@ namespace TextDecomposerTests.Parsing
         }
 
         [Fact]
-        public void WhenTextIsRegular_Parse_ShouldReturnOrderedWords()
+        public void WhenNonEmptyText_Parse_ShouldReturnOrderedWords()
         {
             //arrange
             rawSentencesParser.Parse(Arg.Any<string>()).Returns(new string[] { "sentence 1", "sentence 2" });

@@ -15,7 +15,7 @@ namespace TextDecomposerTests.Parsing
         }
 
         [Fact]
-        public void WhenNoSentenceEndingChars_Parse_ShouldReturnInputString()
+        public void WhenNoSentenceEndingChars_Parse_ShouldReturnOneSentence()
         {
             //arrange
             var noEndingCharsString = "text without dot, question and exclamation mark";

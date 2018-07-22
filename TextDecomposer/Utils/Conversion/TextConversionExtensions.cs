@@ -2,27 +2,39 @@
 using System.Linq;
 using System.Text;
 using System.Xml.Serialization;
+using TextDecomposer.Extensions;
 using TextDecomposer.Models;
 
 namespace TextDecomposer.Utils.Conversion
 {
     public static class TextConversionExtensions
     {
-        public static string ToXmlString<T>(this T toSerialize)
+        public static string ToXmlString(this Text textToSerialize)
         {
-            XmlSerializerNamespaces ns = new XmlSerializerNamespaces();
-            ns.Add("", "");
-            XmlSerializer xmlSerializer = new XmlSerializer(toSerialize.GetType());
+            if (textToSerialize.IsEmpty())
+            {
+                return string.Empty;
+            }
+
+            XmlSerializerNamespaces namespaces = new XmlSerializerNamespaces();
+            namespaces.Add("", "");
+            XmlSerializer xmlSerializer = new XmlSerializer(textToSerialize.GetType());
 
             using (StringWriter textWriter = new StringWriter())
             {
-                xmlSerializer.Serialize(textWriter, toSerialize, ns);
+                xmlSerializer.Serialize(textWriter, textToSerialize, namespaces);
                 return textWriter.ToString().Trim();
             }
         }
 
         public static string ToCsv(this Text text)
         {
+
+            if (text.IsEmpty())
+            {
+                return string.Empty;
+            }
+
             var stringBuilder = new StringBuilder();
             var maxWordsInOneSentence = text.Sentences.Select(s => s.Words.Count).Max();
 

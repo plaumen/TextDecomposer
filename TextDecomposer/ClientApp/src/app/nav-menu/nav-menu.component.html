@@ -1,21 +1,9 @@
-<div>
-    <nav>
-        <ul>
-            <li>
-                <p>
-                    Text to sentences parser!
-                </p>
-            </li>
-            <li>
-                <a href="https://medium.com/@beeman/tutorial-styling-angular-cli-v6-apps-with-bootstrap-8d4f8ea5adae" target="_blank">
-                    <i class="material-icons">supervised_user_circle</i>
-                </a>
-            </li>
-            <li>
-                <a>
-                    <i class="material-icons">code</i>
-                </a>
-            </li>
-        </ul>
-    </nav>
-</div>
+<nav class="navbar navbar-inverse nav-dark">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Text Decomposer</a>
+    </div>
+      <button class="btn btn-primary navbar-btn btn-md btn-space btn-wd right-side-button" (click)="getCsv()">CSV</button>
+      <button class="btn btn-info navbar-btn btn-md btn-space btn-wd right-side-button" (click)="getXml()">XML</button>
+  </div>
+</nav>

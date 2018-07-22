@@ -9,7 +9,7 @@ namespace TextDecomposerTests
     public class TextConversionExtensionsTests
     {
         [Fact]
-        public void When_ToXmlString_ShouldReturnValidXmlString()
+        public void WhenAnySentences_ToXmlString_ShouldReturnValidXmlString()
         {
             //arrange
             var sentences = new Sentence[] { new Sentence { Words = new List<string>(new string[] { "one", "two" }) }, new Sentence { Words = new List<string>(new string[] { "nine", "four" }) } };
@@ -34,7 +34,7 @@ namespace TextDecomposerTests
         }
 
         [Fact]
-        public void When_ToCsv_ShouldReturnValidCsvContent()
+        public void WhenAnySentences_ToCsv_ShouldReturnValidCsvContent()
         {
             //arrange
             var sentences = new Sentence[] { new Sentence { Words = new List<string>(new string[] { "one", "two", "one" }) }, new Sentence { Words = new List<string>(new string[] { "nine", "four" }) } };
@@ -48,7 +48,32 @@ Sentence 2, four, nine";
 
             //assert
             csv.Should().Be(expectedString);
+        }
 
+        [Fact]
+        public void WhenNoSentences_ToCsv_ShouldReturnEmptyString()
+        {
+            //arrange
+            var text = new Text();
+
+            //act
+            var csv = text.ToCsv();
+
+            //assert
+            csv.Should().Be(string.Empty);
+        }
+
+        [Fact]
+        public void WhenNoSentences_ToXml_ShouldReturnEmptyString()
+        {
+            //arrange
+            var text = new Text();
+
+            //act
+            var xml = text.ToXmlString();
+
+            //assert
+            xml.Should().Be(string.Empty);
         }
     }
 }

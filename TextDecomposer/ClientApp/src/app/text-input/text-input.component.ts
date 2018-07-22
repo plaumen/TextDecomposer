@@ -9,19 +9,17 @@ import { DataService } from '../data.service';
 })
 export class TextInputComponent implements OnInit {
 
+  private inputText: string;
+
   constructor(private data: DataService) { }
 
   ngOnInit() {
 
   }
 
-  parseToXml(text: string) {
-    console.log("Parse clicked")
-    this.data.getXml(text);
-  }
-
-  parseToCsv(text: string) {
-    this.data.getCsv(text)
+  valuechange(text: string) {
+    console.log(text);
+    this.data.setCurrentInputText(text);
   }
 
 }
