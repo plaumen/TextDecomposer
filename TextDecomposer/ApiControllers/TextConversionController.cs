@@ -16,16 +16,16 @@ namespace TextDecomposer.ApiControllers
             this.textParser = textParser;
         }
 
-        [HttpGet]
+        [HttpGet("xml/{text}")]
         public ActionResult<string> Xml(string text)
         {
             return this.textParser.Parse(text).ToXmlString();
         }
 
-        [HttpGet]
+        [HttpGet("csv/{text}")]
         public ActionResult<string> Csv(string text)
         {
-            return this.textParser.Parse(text).ToXmlString();
+            return this.textParser.Parse(text).ToCsv();
         }
 
         // GET: api/TextConversion
